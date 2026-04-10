@@ -24,8 +24,6 @@
     const useDraftBtn = document.getElementById("useDraftBtn");
 
     const exportPngBtn = document.getElementById("exportPngBtn");
-    const versusToggleBtn = document.getElementById("versusToggleBtn");
-    const versusPanelEl = document.getElementById("versusPanel");
     const versusStatusEl = document.getElementById("versusStatus");
     const versusTurnBadgeEl = document.getElementById("versusTurnBadge");
     const versusChoicesListEl = document.getElementById("versusChoicesList");
@@ -2209,11 +2207,19 @@
 
     exportPngBtn.addEventListener("click", exportTeamAsImage);
 
-    versusToggleBtn.addEventListener("click", () => {
-      const open = versusPanelEl.style.display !== "none";
-      versusPanelEl.style.display = open ? "none" : "";
-      versusToggleBtn.textContent = open ? "⚔ Versus Draft" : "✕ Close Versus";
-      if (!open) versusPanelEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    // ── Mode Tabs ─────────────────────────────────────────────────────────────
+
+    function switchTab(name) {
+      document.querySelectorAll(".tab-section").forEach(s => {
+        s.style.display = s.id === "tab" + name.charAt(0).toUpperCase() + name.slice(1) ? "" : "none";
+      });
+      document.querySelectorAll(".mode-tab").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === name);
+      });
+    }
+
+    document.querySelectorAll(".mode-tab").forEach(tab => {
+      tab.addEventListener("click", () => switchTab(tab.dataset.tab));
     });
 
     startVersusBtn.addEventListener("click", startVersusDraft);

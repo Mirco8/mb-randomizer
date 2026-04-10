@@ -16,7 +16,7 @@
     <header class="header">
       <div class="header-left">
         <div class="title-lockup">
-          <div class="title-icon">⚡</div>
+          <div class="title-icon"><img src="Logo.png" alt="MB Randomizer Logo" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"></div>
           <h1>MB Randomizer</h1>
         </div>
         <p class="subtitle">Generate random Pokémon teams, run draft challenges and battle your friends — all in one place.</p>
@@ -109,7 +109,6 @@
         <button id="loadBtn" class="btn-secondary">📂 Load</button>
         <div class="btn-divider"></div>
         <button id="clearTypesBtn" class="btn-ghost">Reset Types</button>
-        <button id="versusToggleBtn" class="btn-ghost">⚔ Versus Draft</button>
         <button id="clearBtn" class="btn-danger">🗑 Delete Save</button>
       </div>
 
@@ -133,130 +132,142 @@
       </div>
     </div>
 
-    <!-- Score cards -->
-    <div class="score-grid">
-      <div class="score-card">
-        <div class="score-label">Overall</div>
-        <div class="score-value" id="overallScore">--</div>
-        <div class="score-subtext" id="overallText">No team yet.</div>
-      </div>
-      <div class="score-card">
-        <div class="score-label">Power</div>
-        <div class="score-value" id="powerScore">--</div>
-        <div class="score-subtext">Average raw strength.</div>
-      </div>
-      <div class="score-card">
-        <div class="score-label">Balance</div>
-        <div class="score-value" id="balanceScore">--</div>
-        <div class="score-subtext">Type and role variety.</div>
-      </div>
-      <div class="score-card">
-        <div class="score-label">Coverage</div>
-        <div class="score-value" id="coverageScore">--</div>
-        <div class="score-subtext">Type coverage breadth.</div>
-      </div>
-      <div class="score-card">
-        <div class="score-label">Cursed</div>
-        <div class="score-value" id="cursedScore">--</div>
-        <div class="score-subtext" id="cursedText">How cursed is it.</div>
-      </div>
+    <!-- Mode Tabs -->
+    <div class="mode-tabs">
+      <button class="mode-tab tab-generator active" data-tab="generator">
+        <span class="tab-icon">⚡</span>
+        <span class="tab-label">Generator</span>
+        <span class="tab-sub">Team generieren oder draften — dann Battle Sim</span>
+      </button>
+      <button class="mode-tab tab-versus" data-tab="versus">
+        <span class="tab-icon">⚔</span>
+        <span class="tab-label">Versus Draft</span>
+        <span class="tab-sub">Zwei Spieler draften gegeneinander</span>
+      </button>
     </div>
 
-    <!-- Challenge -->
-    <div class="challenge-box">
-      <div class="challenge-icon">🎯</div>
-      <div>
-        <div class="challenge-title">Challenge</div>
-        <div class="challenge-text" id="challengeText">Generate a team to unlock your challenge.</div>
-        <div class="challenge-meta" id="challengeMeta">Goal: beat the generator.</div>
-      </div>
-    </div>
+    <!-- ── Tab: Generator ───────────────────────────────────────── -->
+    <div class="tab-section" id="tabGenerator">
 
-    <!-- Team -->
-    <div class="team-section">
-      <div class="section-header">
-        <div class="section-title">Generator Team</div>
-        <button id="exportPngBtn" class="btn-secondary" style="font-size:0.78rem;padding:6px 14px;display:none;">📸 Export PNG</button>
-      </div>
-      <div class="team-grid" id="teamGrid">
-        <div class="empty-state" id="emptyState">
-          Hit <strong>"Generate Team"</strong> and see what the universe throws at you.
+      <!-- Score cards -->
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="score-label">Overall</div>
+          <div class="score-value" id="overallScore">--</div>
+          <div class="score-subtext" id="overallText">No team yet.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Power</div>
+          <div class="score-value" id="powerScore">--</div>
+          <div class="score-subtext">Average raw strength.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Balance</div>
+          <div class="score-value" id="balanceScore">--</div>
+          <div class="score-subtext">Type and role variety.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Coverage</div>
+          <div class="score-value" id="coverageScore">--</div>
+          <div class="score-subtext">Type coverage breadth.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Cursed</div>
+          <div class="score-value" id="cursedScore">--</div>
+          <div class="score-subtext" id="cursedText">How cursed is it.</div>
         </div>
       </div>
-    </div>
 
-    <!-- Weakness Analysis -->
-    <div class="weakness-section" id="weaknessSection" style="display:none;">
-      <div class="weakness-title">Team Weaknesses</div>
-      <div class="weakness-grid" id="weaknessGrid"></div>
-    </div>
-
-    <!-- Bottom: Draft + Manual -->
-    <div class="bottom-grid">
-
-      <!-- Draft Mode -->
-      <div class="sub-panel">
-        <div class="sub-panel-title">Draft Mode</div>
-
-        <div class="draft-status" id="draftStatus">
-          Start a draft — each round you pick from 3 options: Power, Balanced, and Chaos.
+      <!-- Challenge -->
+      <div class="challenge-box">
+        <div class="challenge-icon">🎯</div>
+        <div>
+          <div class="challenge-title">Challenge</div>
+          <div class="challenge-text" id="challengeText">Generate a team to unlock your challenge.</div>
+          <div class="challenge-meta" id="challengeMeta">Goal: beat the generator.</div>
         </div>
+      </div>
 
-        <div class="btn-row" style="margin-bottom: 14px;">
-          <button id="startDraftBtn" class="btn-success">▶ Start Draft</button>
-          <button id="resetDraftBtn" class="btn-secondary">↺ Reset</button>
-          <button id="useDraftBtn" class="btn-warning">→ Use as My Team</button>
+      <!-- Team -->
+      <div class="team-section">
+        <div class="section-header">
+          <div class="section-title">Generator Team</div>
+          <button id="exportPngBtn" class="btn-secondary" style="font-size:0.78rem;padding:6px 14px;display:none;">📸 Export PNG</button>
         </div>
-
-        <div class="small-score-box" id="draftScoreBox">No draft team yet.</div>
-
-        <div class="draft-layout">
-          <div>
-            <div class="draft-col-label">Your Picks</div>
-            <div class="draft-picks-grid" id="draftPicksGrid"></div>
-          </div>
-          <div>
-            <div class="draft-col-label">Current Choices</div>
-            <div class="draft-choices-grid" id="draftChoicesGrid"></div>
+        <div class="team-grid" id="teamGrid">
+          <div class="empty-state" id="emptyState">
+            Hit <strong>"Generate Team"</strong> and see what the universe throws at you.
           </div>
         </div>
       </div>
 
-      <!-- Manual + Battle -->
-      <div class="sub-panel">
-        <div class="sub-panel-title">Compare Your Team</div>
-        <div class="manual-builder">
-          <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">
-            Enter 6 Pokémon and compare against the generator team or run a battle sim.
-          </div>
+      <!-- Weakness Analysis -->
+      <div class="weakness-section" id="weaknessSection" style="display:none;">
+        <div class="weakness-title">Team Weaknesses</div>
+        <div class="weakness-grid" id="weaknessGrid"></div>
+      </div>
 
-          <div class="manual-grid">
-            <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 1" autocomplete="off" /></div>
-            <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 2" autocomplete="off" /></div>
-            <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 3" autocomplete="off" /></div>
-            <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 4" autocomplete="off" /></div>
-            <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 5" autocomplete="off" /></div>
-            <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 6" autocomplete="off" /></div>
-          </div>
+      <!-- Draft + Compare nebeneinander -->
+      <div class="bottom-grid" style="margin-top:16px;">
 
-          <div class="btn-row">
-            <button id="compareBtn" class="btn-success">⚖ Compare</button>
-            <button id="battleBtn" class="btn-warning">⚔ Battle Sim</button>
+        <!-- Draft Mode -->
+        <div class="sub-panel">
+          <div class="sub-panel-title">🃏 Draft Mode</div>
+          <div class="draft-status" id="draftStatus">
+            Jede Runde wählst du aus 3 Optionen: Power, Balanced und Chaos. Baue dein bestes 6er-Team.
           </div>
-
-          <div class="result-box" id="manualResult">No comparison yet.</div>
-          <div class="result-box" id="battleBox" style="margin-top: 8px;">No battle yet.</div>
+          <div class="btn-row" style="margin-bottom: 14px;">
+            <button id="startDraftBtn" class="btn-success">▶ Start Draft</button>
+            <button id="resetDraftBtn" class="btn-secondary">↺ Reset</button>
+            <button id="useDraftBtn" class="btn-warning">→ Als mein Team übernehmen</button>
+          </div>
+          <div class="small-score-box" id="draftScoreBox">No draft team yet.</div>
+          <div class="draft-layout">
+            <div>
+              <div class="draft-col-label">Deine Picks</div>
+              <div class="draft-picks-grid" id="draftPicksGrid"></div>
+            </div>
+            <div>
+              <div class="draft-col-label">Aktuelle Auswahl</div>
+              <div class="draft-choices-grid" id="draftChoicesGrid"></div>
+            </div>
+          </div>
         </div>
+
+        <!-- Compare & Battle -->
+        <div class="sub-panel">
+          <div class="sub-panel-title">⚖ Dein Team vergleichen</div>
+          <div class="manual-builder">
+            <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">
+              Gib 6 Pokémon ein (oder übernimm dein Draft-Team) und vergleiche gegen den Generator — oder starte eine Battle Sim.
+            </div>
+            <div class="manual-grid">
+              <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 1" autocomplete="off" /></div>
+              <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 2" autocomplete="off" /></div>
+              <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 3" autocomplete="off" /></div>
+              <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 4" autocomplete="off" /></div>
+              <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 5" autocomplete="off" /></div>
+              <div class="autocomplete-wrap"><input type="text" class="manual-input" placeholder="Pokémon 6" autocomplete="off" /></div>
+            </div>
+            <div class="btn-row">
+              <button id="compareBtn" class="btn-success">⚖ Compare</button>
+              <button id="battleBtn" class="btn-warning">⚔ Battle Sim</button>
+            </div>
+            <div class="result-box" id="manualResult">No comparison yet.</div>
+            <div class="result-box" id="battleBox" style="margin-top: 8px;">No battle yet.</div>
+          </div>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- Versus Draft Mode -->
-    <div class="versus-panel" id="versusPanel" style="display:none;">
+    <!-- ── Tab: Versus ──────────────────────────────────────────── -->
+    <div class="tab-section" id="tabVersus" style="display:none;">
       <div class="sub-panel">
         <div class="sub-panel-title">⚔ Versus Draft — Player vs Player</div>
         <div class="draft-status" id="versusStatus">
-          Two players draft alternately — wie echtes VGC. Jede Runde wählt der aktive Spieler aus 3 Optionen.
+          Zwei Spieler draften abwechselnd — wie echtes VGC. Jede Runde wählt der aktive Spieler aus 3 Optionen. Dann Battle Sim!
         </div>
 
         <div class="btn-row" style="margin-bottom:14px;">
@@ -266,20 +277,15 @@
         </div>
 
         <div class="versus-layout">
-          <!-- Player 1 -->
           <div>
             <div class="versus-player-header p1">Player 1</div>
             <div class="draft-picks-grid" id="versus1Grid"></div>
             <div class="versus-score-box" id="versus1Score">No picks yet.</div>
           </div>
-
-          <!-- Center: Turn + Choices -->
           <div class="versus-center-col">
             <div class="turn-badge" id="versusTurnBadge" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);">---</div>
             <div class="versus-choices-list" id="versusChoicesList"></div>
           </div>
-
-          <!-- Player 2 -->
           <div>
             <div class="versus-player-header p2">Player 2</div>
             <div class="draft-picks-grid" id="versus2Grid"></div>
