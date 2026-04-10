@@ -16,7 +16,7 @@
     <header class="header">
       <div class="header-left">
         <div class="title-lockup">
-          <div class="title-icon"><img src="Logo.png" alt="MB Randomizer Logo" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"></div>
+          <div class="title-icon floating-logo"><img src="Logo.png" alt="MB Randomizer Logo" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"></div>
           <h1>MB Randomizer</h1>
         </div>
         <p class="subtitle">Generate random Pokémon teams, run draft challenges and battle your friends — all in one place.</p>
@@ -62,7 +62,15 @@
         </div>
 
         <div class="control-group">
-          <span class="control-label">Selection Mode</span>
+          <div class="control-label-row">
+            <span class="control-label">Selection Mode</span>
+            <span
+              class="mode-info"
+              title="Smart = stronger picks from a pool, Classic = fully random, Chaos = intentionally weaker or cursed picks">
+              ?
+            </span>
+          </div>
+
           <select id="selectionModeSelect">
             <option value="smart" selected>Smart — best picks from pool</option>
             <option value="classic">Classic — pure random</option>
@@ -101,7 +109,7 @@
       </div>
 
       <div class="btn-row">
-        <button id="generateBtn" class="btn-primary">⚡ Generate Team</button>
+        <button id="generateBtn" class="btn-primary btn-main">⚡ Generate Team</button>
         <div class="btn-divider"></div>
         <button id="newChallengeBtn" class="btn-secondary">🎯 Challenge</button>
         <button id="shareBtn" class="btn-secondary">🔗 Share</button>

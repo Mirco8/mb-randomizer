@@ -773,6 +773,13 @@
     }
 
     async function generateTeam() {
+          // 🔥 FLASH EFFECT
+      document.body.classList.add("flash");
+
+      setTimeout(() => {
+        document.body.classList.remove("flash");
+      }, 200);
+
       // FIX 3 – Race Condition Guard
       if (isLoading) return;
       isLoading = true;
