@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pokémon Team Randomizer</title>
+  <title>MB Randomizer — Pokémon Team Generator</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -950,15 +950,16 @@
       <div class="header-left">
         <div class="title-lockup">
           <div class="title-icon">⚡</div>
-          <h1>Pokémon Team Randomizer</h1>
+          <h1>MB Randomizer</h1>
         </div>
-        <p class="subtitle">Generate, draft, compare and battle — all in one place.</p>
+        <p class="subtitle">Generate random Pokémon teams, run draft challenges and battle your friends — all in one place.</p>
       </div>
       <div class="header-badges">
+        <span class="badge">Pokémon Fan Tool</span>
         <span class="badge">Gen 1–9</span>
         <span class="badge">Draft Mode</span>
         <span class="badge">Battle Sim</span>
-        <span class="badge">Share Link</span>
+        <span class="badge" style="color:rgba(74,222,128,0.8);border-color:rgba(74,222,128,0.2);">Fan-made · Not official</span>
       </div>
     </header>
 
@@ -1182,7 +1183,13 @@
 
   </div>
 
-  <div class="share-toast" id="shareToast">🔗 Link kopiert!</div>
+  <div class="share-toast" id="shareToast">🔗 Link copied!</div>
+
+  <footer style="text-align:center;padding:32px 24px 40px;color:var(--muted2);font-size:0.76rem;line-height:1.7;max-width:700px;margin:0 auto;">
+    MB Randomizer is an unofficial fan-made tool and is not affiliated with, endorsed by, or connected to Nintendo or The Pokémon Company.<br>
+    Pokémon and all related names, characters and properties are trademarks of Nintendo / The Pokémon Company International.<br>
+    Pokémon data provided by <a href="https://pokeapi.co" target="_blank" style="color:var(--accent);text-decoration:none;">PokéAPI</a>.
+  </footer>
 
 
   <script>
